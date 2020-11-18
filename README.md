@@ -52,5 +52,5 @@ npm start
 בקובץ server-connect.service.ts
 
 ניתן לעבוד גם באופן מרוחק לחלוטין דרך יצירת FORK באתר STACKBLITZ
-(https://stackblitz.com/edit/angular-sjcrfk?file=src/app/app.component.ts)
+[link](https://stackblitz.com/edit/angular-sjcrfk?file=src/app/app.component.ts)
 </div>
