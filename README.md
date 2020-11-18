@@ -1,6 +1,7 @@
+<div dir="rtl">
 # Page4Work
 
-(logo.PNG)
+(logo.png)
 
 
 # הוראות התקנה
@@ -17,3 +18,4 @@ npm install
 npm start
 ```
 
+</div>
