@@ -7,17 +7,26 @@
 
 
 # הוראות התקנה
-להרצת השרת ובסיס הנתונים
+לנוחיותכם ניתן להריץ את הBACKEND בנפרד מהFRONTEND.
+להרצת השרת ובסיס הנתונים (דורש שימוש בDOCKER)
 ```
 docker-compose build
 docker-compose up
 ```
-ניתן לעבוד מול הAPI בכתובת (http://localhost:5000/)
+לאחר הטעינה ניתן לעבוד ישירות מול הAPI בפורט 5000 (http://localhost:5000/)
+
 
 קימפול אתר האינטרנט (נדרש npm להורדת החבילות)
 ```
 npm install
 npm start
 ```
+במידה ואתם מעדיפים לעבוד מול השרת שלנו ולא להריץ במקומי תצטרכו לשנות את כתובת השרת
+```
+ baseUrl = 'https://us-central1-vivid-fragment-225620.cloudfunctions.net/'
+```
+בקובץ server-connect.service.ts
 
+ניתן לעבוד גם באופן מרוחק לחלוטין דרך יצירת FORK באתר STACKBLITZ
+[StackBlitz](https://stackblitz.com/edit/angular-sjcrfk?file=src/app/app.component.ts)
 </div>
