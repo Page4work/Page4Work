@@ -2,7 +2,7 @@
   
 # Page4Work
 
-![logo](logo.PNG =50x)
+<img src="logo.PNG" alt="drawing" width="100"/>
 
 
 # הוראות התקנה
