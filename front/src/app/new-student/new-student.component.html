@@ -1,0 +1,25 @@
+<div class="control-section" style="padding-top:50px;padding-left:50px;padding-right:50px">
+  <button *ngIf="this.data.length == 0"(click)="this.getTeacherCode()">Get Teacher Code For your studens</button>
+    <ejs-dropdownlist id='value' #sample index='0' width='220' [dataSource]='ddlData' [fields]='fields' [popupHeight]='height'></ejs-dropdownlist>
+    <span id='msg'></span>
+    <br/>
+    <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='data' rowHeight='38' [allowSelection]='true' [allowSorting]='true' height='600' (dataBound)='onDataBound($event)' [enableHover]='false' [selectionSettings]='selectionSettings' [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='true'>
+        <e-columns>
+            <e-column type='checkbox' [allowFiltering]='false' [allowSorting]='false' width='60'></e-column>
+            <e-column field='teacher' [visible]='false' headerText='teacher' width='130' [isPrimaryKey]='true'></e-column>
+            <e-column field='student' headerText='Student Id' [filter]='filter' clipMode='EllipsisWithTooltip' width='200'>
+            </e-column>
+            <e-column field='studenfName' headerText='fName' [filter]='filter' clipMode='EllipsisWithTooltip' width='170' ></e-column>
+            <e-column field='studenlName' headerText='lName' [filter]='filterSettings' ></e-column>
+            <e-column field='strat_time' headerText='strat_time' [filter]='filter'>
+            </e-column>
+            <e-column field='end_time' [filter]='end_time' headerText='Status' >
+                         
+            </e-column>
+            <e-column field='contact' [filter]='filter' headerText='contact' >
+                
+            </e-column>
+            
+        </e-columns>
+    </ejs-grid>   
+</div>

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>create your page</h1>
+<div mat-dialog-content>
+      <div class="input-group form-group">
+        <input type="text" name="title" class="form-control" placeholder="title" #title>
+      </div>
+     <div class="input-group form-group">
+        <textarea class="form-control" placeholder="description" #desc></textarea>
+      </div>
+</div>
+<div mat-dialog-actions>
+  <input type="submit" name="btn" value="create" class="btn btn-warning btn-sm btn-block" mat-button (click)="onNoClick(title.value,desc.value)" cdkFocusInitial>
+  <input type="submit" name="btn" value="close" class="btn btn-warning btn-sm btn-block" mat-button [mat-dialog-close]="data.name">
+</div>

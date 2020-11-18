@@ -1,0 +1,49 @@
+<div class="container" style="padding-top:50px;">
+<div cdkDropListGroup>
+            <button (click)="sections.push([]);send();" mat-menu-item style="border-radius: 50%; border: none">
+          <mat-icon>add</mat-icon>add chapter
+        </button>
+  <div class="example-container" *ngFor="let sec of sections; index as i">
+    <h2 style="display: inline;">chapter {{i+1}}</h2>
+        <button (click)="sections.splice(i, 1);send();findExsist()" mat-menu-item style="border-radius: 50%; border: none">
+          <mat-icon>delete</mat-icon>
+        </button>
+    <div
+      cdkDropList
+      [cdkDropListData]="sections[i]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)" >
+      <div class="example-box" *ngFor="let item of sections[i]" cdkDrag>
+        <button (click)="openDialog(item)" mat-menu-item style="border-radius: 50%; background-color: white; border: none;">
+          <mat-icon>zoom_in</mat-icon>
+        </button>
+        {{item}}
+        </div>
+    </div>
+  </div>
+
+    <div class="example-container">
+    <h2>exist units</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="exist"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box">
+        <button (click)="ne()" mat-menu-item style="border-radius: 50%; background-color: white; border: none;">
+          <mat-icon>add</mat-icon>
+        </button>  
+        create new unit
+      </div>
+      <div class="example-box" *ngFor="let item of exist" cdkDrag>
+        <button (click)="openDialog(item)" mat-menu-item style="border-radius: 50%; background-color: white; border: none;">
+          <mat-icon>zoom_in</mat-icon>
+        </button>  
+        {{item}}
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>

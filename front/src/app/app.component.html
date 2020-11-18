@@ -1,0 +1,21 @@
+<section class="py-3 bg-warning h-100 ">
+	<nav class="navbar navbar-expand-sm navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
+		<div class="container">
+			<a class="navbar-brand">GET PAGE</a>
+			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-user"></i></span>
+</button>
+			<div class="collapse navbar-collapse" id="probootstrap-navbar">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" [routerLink]="['/selectWorkPage']">Pages</a></li>
+					<li class="nav-item"><a [routerLink]="['/login']" class="nav-link" href="#section-reviews">login</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<router-outlet></router-outlet>
+	</div>
+</section>

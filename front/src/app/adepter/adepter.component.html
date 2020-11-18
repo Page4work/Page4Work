@@ -1,0 +1,9 @@
+<div [ngSwitch]="type">
+  <!-- the same view can be shown in more than one case -->
+  <app-rtext *ngSwitchCase="0" [id]="part['id']" [data]="part['data']" [fin]="part">...</app-rtext>
+  <app-instructions *ngSwitchCase="1"  [data]="part['data']">...</app-instructions>
+  <app-instructions *ngSwitchCase="4"  [data]="part['data']" [grade]="part['grades']">...</app-instructions>
+  <app-feedback *ngSwitchCase="3" [part]="part">...</app-feedback>
+  <!--default case when there are no matches -->
+  <div *ngSwitchDefault>not supported - part['id'] - {{part['id']}}, part['editable'] - {{part['editable']}}, part['type'] - {{ part['type'] }}</div>
+</div>

@@ -1,0 +1,9 @@
+<!--ckeditor [config]="conf" [editor]="Editor" [data]="data" [disabled]="true"></ckeditor-->
+<div *ngIf="grade>=0" class="alert  alert-primary">
+<h4>The teacher answer: {{this.grade}}</h4>
+<ejs-richtexteditor style="direction: rtl;text-align: right;" [readonly]="true" [value]='data' [inlineMode]='inlineMode'></ejs-richtexteditor>
+</div>
+<div *ngIf="!grade">
+<ejs-richtexteditor style="direction: rtl;text-align: right;" [readonly]="true" [value]='data' [inlineMode]='inlineMode'></ejs-richtexteditor>
+</div>
+

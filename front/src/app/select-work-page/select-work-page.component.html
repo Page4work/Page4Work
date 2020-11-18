@@ -1,0 +1,75 @@
+
+<section class="py-5 bg-warning">
+    <div class="container">
+      
+<div class="col-md-8">
+    <div>
+        <input #code placeholder="Page Code">
+        <button style="border-radius: 50%; border: none;" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="joinGroup(code.value)">
+            <mat-icon>share</mat-icon>
+            <span>join to page</span>
+          </button>
+          <button mat-menu-item (click)="viewonly(code.value)">
+            <mat-icon>share</mat-icon>
+            <span>view link Details</span>
+          </button>
+        </mat-menu>
+    </div>
+
+     
+        <button type="button" class="btn btn-warning btn-sm btn-block" (click)="openDialog()">create own page</button>
+       </div>
+  <div *ngIf="this.wait">Loading information...</div>     
+	<div class="row mb-3" *ngFor="let item of workPages">
+	    <div class="col-md-8">
+	        <div class="card shadow">
+	            <div class="card-body">
+	                <div class="row text-center ">
+                	    <div class="col-md-1 mr-2">
+                	        <i class="fa fa-tachometer fa-2x "></i>
+                          <button style="border-radius: 50%; background-color: white; border: none;" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item [routerLink]="['/students',item.id]">
+                              <mat-icon>share</mat-icon>
+                              <span>give to students</span>
+                            </button>
+                            <button mat-menu-item [routerLink]="['/build',item.id]">
+                              <mat-icon>edit</mat-icon>
+                              <span>edit page</span>
+                            </button>
+                            <button mat-menu-item  [routerLink]="['/answers',item.id]">
+                              <mat-icon>add_comment</mat-icon>
+                              <span>get answers</span>
+                            </button>
+                          </mat-menu>
+                	    </div>
+                	    <div class="col-md-6">
+                	        <h4>{{item.title}}</h4>
+                	        <p>{{item.dec}}</p>
+                	    </div>
+                	    <div class="col-md-4">
+                	        <h3>2495/-</h3>
+                	        <small>{{item.type}}</small>
+                	        <div class="sub-row">
+                	            <button type="button" class="btn btn-warning btn-sm btn-block" [routerLink]="['/chapter',item.id]">View details</button>
+                	        </div>
+                	    </div>
+                	</div>
+	            </div>
+	        </div>
+	        
+        	
+	    </div>
+	</div>
+	
+	
+	
+	
+</div>
+</section>

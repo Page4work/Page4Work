@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+<app-edit-unit [unitId]="data.name"  [pageId]="data.animal"></app-edit-unit>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">close</button>
+  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial></button>
+</div>

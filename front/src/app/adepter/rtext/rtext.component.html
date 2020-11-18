@@ -1,0 +1,3 @@
+<!--ckeditor (change)="saveData($event)" [config]="conf" [editor]="Editor" [data]="data" (ready)="onReady($event)"></ckeditor-->
+<mat-slide-toggle [checked]="checked" (change)="change($event)" #s>O.K.</mat-slide-toggle>
+<ejs-richtexteditor style="direction: rtl;text-align: right" (change)="saveData()" #toolsRTE id='alltoolRTE' [toolbarSettings]='tools' [value]='data'  [enableResize]="true">

@@ -1,0 +1,175 @@
+<script>
+    token = ""
+    baseUrl = '/'
+    http = {}
+    http["post"] = (url, data) => {
+        var method = "POST";
+        var request = new XMLHttpRequest();
+        request.onload = function () {
+            var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+            var data = request.responseText; // Returned data, e.g., an HTML document.
+            l3.value += data
+            if ("token" in JSON.parse(data)) token = JSON.parse(data)["token"]
+        }
+        request.open(method, url, true);
+
+        request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        request.send(JSON.stringify(data));
+    }
+    getUnit = (id, student = false) => {
+        let loginstring = { "user": token, "id": id };
+        if (student) loginstring["student"] = student;
+        return http.post(baseUrl + 'getUnit', loginstring);
+    }
+    sendPic = (pic) => {
+        console.log(pic);
+        return http.post(baseUrl + 'upload-base64', { "UploadFiles": pic })
+    }
+    getUnitTeacher = (id) => {
+        let loginstring = { "user": token, "id": id };
+        loginstring["student"] = false;
+        return http.post(baseUrl + 'getUnitTeacher', loginstring);
+    }
+    getStudentsAns = (id, student) => {
+        let loginstring = { "user": token, "id": id,"studentid":student };
+        return http.post(baseUrl + 'getStudentsAns', loginstring);
+    }
+    joinPage = (code, viewOnly = false) => {
+        let loginstring = { "user": token, "code": code, "viewOnly": viewOnly };
+        return http.post(baseUrl + 'joinPage', loginstring);
+    }
+    getTeacherCode = (page) => {
+        let loginstring = { "user": token, "page": page };
+        return http.post(baseUrl + 'getTeacherCode-1', loginstring);
+    }
+    newPage = (name, desc) => {
+        let loginstring = { "user": token, "name": name, "desc": desc };
+        return http.post(baseUrl + 'newPage', loginstring);
+    }
+    share = (page = 3, startTime = 0, endTime = 0) => {
+        let loginstring = { "user": token, "id": page };
+        return http.post(baseUrl + 'share', loginstring);
+    }
+    register = (email, passw, lname, fname) => {
+        let loginstring = { "email": email, "pass": passw, "lname": lname, "fname": fname };
+        return http.post(baseUrl + 'register', loginstring);
+    }
+    sendText = (id, text, param = []) => {
+        let loginstring = { "user": token, "id": id, "text": text };
+        for (let p of param) {
+            loginstring[p.key] = p.value;
+        }
+        return http.post(baseUrl + 'editText', loginstring);
+    }
+    getWorkPages = (user) => {
+        let loginstring = { "user": token };
+        return http.post(baseUrl + 'getPages', loginstring);
+    }
+    getWorkPage = (id) => {
+        let loginstring = { "user": token, "id": id };
+        return http.post(baseUrl + 'getChepters', loginstring);
+    }
+    editWorkPage = (id, newSec) => {
+        let loginstring = { "user": token, "id": id, "newSec": newSec };
+        return http.post(baseUrl + 'EditChepters', loginstring);
+    }
+    createObj = (id, type = 1, unitnum = 0) => {
+        let loginstring
+        if (!unitnum)
+            loginstring = { "user": token, "id": id, "type": type };
+        else
+            loginstring = { "user": token, "id": id, "type": type, "unitnum": unitnum };
+        return http.post(baseUrl + 'newUnit', loginstring);
+    }
+
+    login = (user, pass) => {
+        let loginstring = { "user": user, "pass": pass };
+        return http.post(baseUrl + 'login', loginstring);
+    }
+
+
+</script>
+<style>
+    .box {
+    margin: 50px;
+}
+</style>
+<textarea id="l3"></textarea><br />
+
+<div class="box">
+<div>
+    <input id="l1" /><input id="l2" />
+    <button onclick="login(l1.value,l2.value)">login</button>
+</div>
+<div>
+    email<input  id="l15" />passw<input id="l16" />lname<input id="l17" />fname<input id="l18" /> 
+    <button onclick="register(l15.value,l16.value,l17.value,l18.value)">register</button>
+</div>
+</div>
+
+<div class="box">
+    <div>
+    
+        <button onclick="getWorkPages('bj')">getWorkPages</button>
+    </div>
+<div>
+    <div>
+        id<input  id="l22" />
+        <button onclick="getWorkPage(l22.value)">getWorkPage</button>
+    </div>
+    id<input id="l4" />student(bool)<input id="l5" />
+    <button onclick="getUnit(l4.value,l5.value)">getUnit</button>
+</div>
+
+<div>
+    id<input id="l7" />
+    <button onclick="getUnitTeacher(l7.value)">getUnitTeacher</button>
+</div>
+<div>
+    id<input id="l77" />student<input id="l88" />
+    <button onclick="getStudentsAns(l77.value,l88.value)">getStudentsAns</button>
+</div>
+
+
+</div>
+
+<div class="box">
+<div>
+    name<input id="l12" /> desc<input id="l13" />
+    <button onclick="newPage(l12.value,l13.value)">newPage</button>
+</div>
+<div>
+    id<input  id="l25" />type<input  id="l26" value="1"/>unitnum<input  id="l27" value="0"/>
+    <button onclick="createObj(l25.value,l26.value,l27.value)">createObj (newUnit)</button>
+</div>
+<div>
+    id<input  id="l23" />newSec[array]<input  id="l24" value="[[0]]" />|
+    <button onclick="editWorkPage(l23.value,JSON.parse(l24.value))">editWorkPage</button>
+</div>
+</div>
+
+
+<div class="box">
+<div>
+    id<input  id="l19" />text<input id="l20" />param(dic)<input id="l21" />[{"key":"student\fin","value":1605611752}]
+    <button onclick="sendText(l19.value,l20.value,JSON.parse(l21.value))">sendText</button>
+</div>
+<div>
+    pic<input id="l6" />
+    <button onclick="sendPic(l6.value)">sendPic</button>
+</div>
+</div>
+<div class="box">
+
+<div>
+    page<input id="l14" /> 
+    <button onclick="share(l14.value)">list share</button>
+</div>
+<div>
+    code<input id="l9" />only view(bool)<input id="l10" />
+    <button onclick="joinPage(l9.value,l10.value)">joinPage</button>
+</div>
+<div>
+    page<input id="l11" />
+    <button onclick="getTeacherCode(l11.value)">getTeacherCode</button>
+</div></div>

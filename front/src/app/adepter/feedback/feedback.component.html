@@ -1,0 +1,13 @@
+
+
+<!--div class="alert alert-primary">response panel: student number: <b>{{part.student}}</b>, student grades: <b>{{part.grades}}</b>
+</div-->
+   <mat-slider
+        [max]="100"
+        [min]="0"
+        [step]="1"
+        [thumbLabel]="true"
+        [(value)]="part.grades">
+    </mat-slider>
+  <app-rtext [id]="part['id']" [data]="part['data']" [fin]="part" [points]="part.grades">...</app-rtext>
+  
