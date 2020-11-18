@@ -1,8 +1,9 @@
 <div dir="rtl">
+  <img src="logo.PNG" alt="drawing" width="200"/>
   
 # Page4Work
 
-<img src="logo.PNG" alt="drawing" width="100"/>
+
 
 
 # הוראות התקנה
