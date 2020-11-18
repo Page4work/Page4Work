@@ -1,7 +1,8 @@
 <div dir="rtl">
+  
 # Page4Work
 
-(logo.png)
+![logo](logo.PNG)
 
 
 # הוראות התקנה
