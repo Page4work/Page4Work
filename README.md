@@ -2,7 +2,7 @@
   
 # Page4Work
 
-![logo](logo.PNG)
+![logo](logo.PNG =50x)
 
 
 # הוראות התקנה
