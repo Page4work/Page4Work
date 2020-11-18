@@ -1,6 +1,6 @@
 # Page4Work
 
-(logo.png)
+(logo.PNG)
 
 
 # הוראות התקנה
