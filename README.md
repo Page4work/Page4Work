@@ -1,16 +1,19 @@
-# MongoDB + Flask + Docker
-Example of how to integrate these things together
+# Page4Work
+
+(logo.png)
 
 
-To run:
+# הוראות התקנה
+להרצת השרת ובסיס הנתונים
 ```
-sudo docker-compose build
-sudo docker-compose up
+docker-compose build
+docker-compose up
+```
+ניתן לעבוד מול הAPI בכתובת (http://localhost:5000/)
+
+קימפול אתר האינטרנט (נדרש npm להורדת החבילות)
+```
+npm install
+npm start
 ```
 
-
-You should now be able to see the site at 0.0.0.0:5000
-
-
-# References
-[A MongoDB Driven Flask Application in Docker from Scratch](https://www.youtube.com/watch?v=6opltZu4ABw)
